@@ -1,0 +1,13 @@
+.image_container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.thumbnail {
+  width: 15%;
+  padding: 1%;
+}
