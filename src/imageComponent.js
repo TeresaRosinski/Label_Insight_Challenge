@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Modal from './Modal'
 
 function ImageComponent(props) {
   return (
@@ -11,6 +11,11 @@ function ImageComponent(props) {
         className="thumbnail"
         alt={"box number" + props.id}
       />
+      <Modal 
+      id={props.id}
+      showModal={props.showModal} setShowModal={props.setShowModal}
+      url={props.url}
+      title={props.title}></Modal>
     </div>
   );
 }

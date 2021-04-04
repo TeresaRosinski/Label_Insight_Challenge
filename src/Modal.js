@@ -1,18 +1,25 @@
 import React from "react";
 
-const Modal = (props) => {
-  const [value, setValue] = React.useState(
-    localStorage.getItem("myValueInLocalStorage") || ""
-  );
-  React.useEffect(() => {
-    localStorage.setItem("myValueInLocalStorage", value);
-  }, [value]);
-  const onChange = (event) => setValue(event.target.value);
 
+const useStateWithLocalStorage = localStorageKey => {
+  let [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ''
+  );
+ 
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value);
+  }, [value]);
+ 
+  return [value, setValue];
+};
+const Modal = (props) => {
+  let [value, setValue] = useStateWithLocalStorage(
+    'myValueInLocalStorage'
+  );
   function closeModal(e) {
-    e.stopPropagation();
     props.setShowModal(false);
   }
+  const onChange = event => setValue(event.target.value);
 
   return (
     <div>
@@ -20,7 +27,7 @@ const Modal = (props) => {
         <div className="modalBackground">
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
             <h1>
-              Title Here{" "}
+              {props.title}{" "}
               <span className="close" onClick={closeModal}>
                 &times;
               </span>
