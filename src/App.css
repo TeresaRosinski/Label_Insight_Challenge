@@ -1,3 +1,8 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 .image_container {
   display: flex;
   flex-direction: row;
@@ -7,7 +12,45 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-.thumbnail {
+.imageComponent {
   width: 15%;
   padding: 1%;
+  height: 15%;
+}
+.thumbnail {
+  height: 100%;
+  width: 100%;
+}
+
+.modalBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-top: 10%;
+}
+.modalContent {
+  background-color: white;
+  overflow: auto;
+  width: 70%;
+  height: 70vh;
+  margin-left:10%;
+  margin-bottom: 10%;
+  padding: 5%;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+.modalContent h1 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modalContent input {
+  margin-top: 2%;
 }

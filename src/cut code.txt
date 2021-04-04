@@ -1,0 +1,20 @@
+const getImages = () => {
+    Axios.get("https://jsonplaceholder.typicode.com/photos").then(
+      (response) => {
+        setImageInfo(response.data);
+      }
+    );
+  };
+  getImages();
+      <div className="image_container">
+        {displayedImageArray.map((item, index) => (
+          <ImageComponent
+            thumbnailUrl={item.thumbnailUrl}
+            key={index}
+            url={item.url}
+            title={item.title}
+            id={item.id}
+            onClick={openModal}
+          />
+        ))}
+      </div>
