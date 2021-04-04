@@ -1,30 +1,32 @@
 import "./App.css";
 import React, { useState } from "react";
+import useLocalStorage from "react-use-localstorage";
 import Axios from "axios";
 import ImageComponent from "./imageComponent.js";
 
-
 function App() {
-  const [imageInfo, setImageInfo] = useState([]);
-  const getImages = async() => {
+  let [imageInfo, setImageInfo] = useState([]);
+  const getImages = async () => {
     try {
-      const response = await Axios.get("https://jsonplaceholder.typicode.com/photos/?_limit=25")
-      response = 
-        setImageInfo(response.data);
-      
-    } catch (err){
-      console.error(err)
+      let response = await Axios.get(
+        "https://jsonplaceholder.typicode.com/photos/?_limit=25"
+      );
+      response = setImageInfo(response.data);
+    } catch (err) {
+      console.error(err);
     }
   };
   getImages();
   const displayedImageArray = imageInfo;
+
+  const [item, setItem] = useLocalStorage("name", "Initial Value");
 
   const [showModal, setShowModal] = useState(false);
   const openModal = () => setShowModal(!showModal);
 
   return (
     <div className="App">
-      <h1>Images</h1>
+      <h1>Teresa Rosinski's</h1> <h1> Label Insight Coding Challenge</h1>
       <div className="image_container">
         {displayedImageArray.map((item, index) => (
           <>

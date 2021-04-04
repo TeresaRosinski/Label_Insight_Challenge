@@ -1,16 +1,23 @@
 body {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 3%;
+}
+h1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  letter-spacing: 2px;
 }
 .image_container {
   display: flex;
   flex-direction: row;
   width: 70%;
-  margin-left: 12.5%;
-  margin-right: 12.5%;
+  margin-left: 15%;
+  margin-right: 15%;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-top: 3%;
 }
 .imageComponent {
   width: 15%;
@@ -33,6 +40,10 @@ body {
   padding-top: 10%;
 }
 .modalContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
   background-color: white;
   overflow: auto;
   width: 70%;
@@ -51,4 +62,14 @@ body {
 
 .modalContent input {
   margin-top: 2%;
+}
+.closeSymbol {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  font-size: 300%;
+}
+.titleAndInput {
+  padding-left: 3%;
 }

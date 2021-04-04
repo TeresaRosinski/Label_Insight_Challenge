@@ -1,20 +1,18 @@
-const getImages = () => {
-    Axios.get("https://jsonplaceholder.typicode.com/photos").then(
-      (response) => {
-        setImageInfo(response.data);
-      }
-    );
-  };
-  getImages();
-      <div className="image_container">
-        {displayedImageArray.map((item, index) => (
-          <ImageComponent
-            thumbnailUrl={item.thumbnailUrl}
-            key={index}
-            url={item.url}
-            title={item.title}
-            id={item.id}
-            onClick={openModal}
-          />
-        ))}
-      </div>
+const Modal = (props) => {
+  let [value, setValue] = useStateWithLocalStorage("myValueInLocalStorage");
+  function closeModal(e) {
+    props.setShowModal(false);
+  }
+
+  let [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ""
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value);
+  }, [value]);
+
+  return [value, setValue];
+};
+
+localStorageKey

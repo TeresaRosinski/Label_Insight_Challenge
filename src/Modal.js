@@ -1,41 +1,38 @@
 import React from "react";
 
+const useStateWithLocalStorage = (props) => {
+  let [value, setValue] = React.useState(localStorage.getItem(props.id) || "");
 
-const useStateWithLocalStorage = localStorageKey => {
-  let [value, setValue] = React.useState(
-    localStorage.getItem(localStorageKey) || ''
-  );
- 
   React.useEffect(() => {
-    localStorage.setItem(localStorageKey, value);
+    localStorage.setItem(props.id, value);
   }, [value]);
- 
+
   return [value, setValue];
 };
 const Modal = (props) => {
-  let [value, setValue] = useStateWithLocalStorage(
-    'myValueInLocalStorage'
-  );
+  let [value, setValue] = useStateWithLocalStorage("props.id");
+
   function closeModal(e) {
     props.setShowModal(false);
   }
-  const onChange = event => setValue(event.target.value);
+
+  const onChange = (event) => setValue(event.target.value);
 
   return (
     <div>
       {props.showModal ? (
         <div className="modalBackground">
           <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-            <h1>
-              {props.title}{" "}
-              <span className="close" onClick={closeModal}>
-                &times;
-              </span>
-            </h1>
             <img src={props.url}></img>
-            <label>Description:</label>
-            <input value={value} type="text" onChange={onChange}></input>
-            <p>{value}</p>
+            <div className="title">
+              <p className="closeSymbol" onClick={closeModal}>
+                &times;
+              </p>
+              <h2>{props.title} </h2>
+              <label>Description:</label>
+              <input value={value} type="text" onChange={onChange}></input>
+              <p>{value}</p>
+            </div>
           </div>
         </div>
       ) : null}
